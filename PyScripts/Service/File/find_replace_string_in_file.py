@@ -1,7 +1,7 @@
 from os import environ
 import sys
 
-sys.path.append(environ["PYSCRIPT_PATH"])
+sys.path.append(environ["PYUTILS_PATH"])
 from Utilities.package import GrepUtilities, join, pyScripPath
 
 lines = ""
