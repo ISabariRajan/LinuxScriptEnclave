@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source ~/.bashrc
-supython $DEV_HELPER_PY_SCRIPT_PATH/Service/Disk/mountalldisks.py $@
+supython $PYSCRIPT_PATH/Service/Disk/mountalldisks.py $@

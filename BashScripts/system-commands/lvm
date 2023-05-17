@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source ~/.bashrc
-$(dirname $DEV_HELPER_COMMANDS_PATH)/system-commands/lvm-scripts/$@
+$(dirname $COMMANDS_PATH)/system-commands/lvm-scripts/$@

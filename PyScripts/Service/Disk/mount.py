@@ -5,7 +5,7 @@ import sys
 import json
 
 MOUNT_DIR = "/mounts/"
-sys.path.append(os.environ["DEV_HELPER_PY_SCRIPT_PATH"])
+sys.path.append(os.environ["PYUTILS_PATH"])
 from Utilities.package import DeviceUtilities
 
 print(sys.argv)

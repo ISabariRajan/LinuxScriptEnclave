@@ -2,4 +2,4 @@
 
 source ~/.bashrc
 # echo $@
-$(dirname $DEV_HELPER_COMMANDS_PATH)/terminal-commands/$@
+$(dirname $COMMANDS_PATH)/terminal-commands/$@

@@ -3,7 +3,7 @@
 import os
 import sys
 
-sys.path.append(os.environ["DEV_HELPER_PY_SCRIPT_PATH"])
+sys.path.append(os.environ["PYUTILS_PATH"])
 from Utilities.package import DeviceUtilities, FileUtilities, environ
 # import Constants as const
 

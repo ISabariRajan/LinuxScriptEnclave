@@ -1,2 +1,2 @@
 #! /bin/bash
-sudo $DEV_HELPER_COMMANDS_PATH/sucommand $@
+sudo $COMMANDS_PATH/sucommand $@
