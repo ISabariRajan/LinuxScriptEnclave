@@ -1,0 +1,32 @@
+#! /bin/bash
+
+printf "\n<Please Input details for Configuring GIT> "
+printf "\nYour Full Name: "
+read user_full_name
+printf "\nYour MicroFocus Email: "
+read user_email
+wait
+
+
+git config --global user.name "$user_full_name"
+git config --global user.email "$user_email"
+
+
+printf "\nGenerating SSH for Bitbucket: "
+cd ~/.ssh
+SSH_FILE="$SSH_PATH/git_rsa"
+if [ ! -f $SSH_FILE ]; then
+    printf "\nSSH_KEY not found, Creating SSH key"
+    ssh-keygen -t rsa -q -f $SSH_FILE -N "" -C "$user_email"
+    sudo chmod 600 ~/.ssh/git_*
+fi
+
+printf "\nPress Enter key to next step: "
+read a
+printf "$(cat $SSH_FILE.pub)" | xclip -selection clipboard
+
+printf "\nSSH key generated for GIT/ Bitbucket"
+printf "\nLogin to --- https://git.verticacorp.com/plugins/servlet/ssh/account/keys"
+printf "\nClick Add Key Button and press Ctrl+v, Then Add key"
+printf "\nPress Enter key, Once you complete this step: "
+read a

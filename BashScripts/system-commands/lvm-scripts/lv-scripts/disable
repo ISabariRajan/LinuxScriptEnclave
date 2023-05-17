@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Unmounting $2"
+suc umount -rl /dev/$1/$2
+wait
+sleep 5
+echo "Disabling $1/$2"
+suc lvchange -an /dev/$1/$2

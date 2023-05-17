@@ -1,0 +1,11 @@
+#!/bin/bash
+source ~/.bashrc
+printf "\n Creating Executables\n"
+if [ -z $1 ]; then
+    suc chmod -R +x $DEV_HELPER_BASH_SCRIPT_PATH/*
+else
+    printf "$1"
+    suc chmod -R +x $1/*
+fi
+
+printf "\n Executables created successfully\n"

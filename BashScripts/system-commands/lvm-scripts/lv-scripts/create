@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Creating LV: $2 on VG:$1"
+suc lvcreate -l +100%FREE -n $2 --wipesignatures y --yes --zero y $1
+if [[ "$3" = "--format" ]]; then
+    ext_type=$4
+    if [ -z "$4" ]; then
+        ext_type=ext4
+    fi
+    echo "Formating($ext_type): /dev/$1/$2"
+    suc mkfs -t $ext_type /dev/$1/$2
+fi
+echo "Enabling LVM $1/$2"
+suc lvchange -ay $1/$2

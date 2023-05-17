@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+# This script installs all packages to be installed before anything else
+# In future, If any pacakges are required, add a new install script here
+
+suc dnf install -y epel-release >>$LOGS_PATH/install.log &2>&1
+wait
+# package check_and_install_package openssh
+package check_and_install_package git
+package check_and_install_package sshpass
+

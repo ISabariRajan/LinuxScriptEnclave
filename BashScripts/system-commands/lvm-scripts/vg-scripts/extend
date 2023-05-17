@@ -1,0 +1,9 @@
+#!/bin/bash
+vg_name=$1
+# Extend VG for other devices
+devices=${@:2}
+for device in $devices
+do
+    suc wipefs -a $device
+    suc vgextend $vg_name $device
+done

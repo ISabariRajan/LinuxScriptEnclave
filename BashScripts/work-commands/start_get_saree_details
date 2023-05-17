@@ -1,0 +1,1 @@
+$COMMANDS_PATH/pyexec $BOTS_PATH/Business/GetSareePriceList/main.py

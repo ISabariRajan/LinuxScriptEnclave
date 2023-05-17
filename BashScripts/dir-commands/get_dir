@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ~/.bashrc
+DIR=$(pwd)
+
+# https://stackoverflow.com/questions/13210880/replace-one-substring-for-another-string-in-shell-script 
+function get_dir () {
+    if [ "$DIR" = "$HOME" ]; then
+        DIR="I'm Home"
+    else
+        DIR=${DIR/$HOME/"~"}
+    fi
+    echo $DIR
+}
+
+echo $(get_dir)

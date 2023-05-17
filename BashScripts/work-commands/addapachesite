@@ -1,0 +1,2 @@
+$COMMANDS_PATH/pyexec $BOTS_PATH/add_new_apache_site/main.py
+

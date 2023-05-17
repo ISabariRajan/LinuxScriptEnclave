@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ~/.bashrc
+suc openvpn --config $1
+#  >>$LOGS_PATH/openvpn.log
+#  &2>&1

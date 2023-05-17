@@ -1,0 +1,33 @@
+WSGIScriptAlias /django /home/pi/commands/bots/generate_mining_csv/mining_info/mining_info/wsgi.py
+WSGIPythonHome /home/pi/work/devenv
+WSGIPythonPath /home/pi/commands/bots/generate_mining_csv/mining_info
+
+<Directory /home/pi/commands/bots/generate_mining_csv/mining_info>
+<Files wsgi.py>
+Require all granted
+</Files>
+</Directory>
+
+# Alias Directory Option for RPIService
+Alias /RPIService/ "/home/pi/RPIService/"
+Alias /work/ "/home/pi/work/"
+
+<Directory "/home/pi/RPIService/">
+Options All
+	AllowOverride All
+	Require all granted
+	Order allow,deny
+	Allow from all
+</Directory>
+
+
+# Alias Directory Option for works
+
+
+<Directory "/home/pi/work/">
+Options All
+	AllowOverride All
+	Require all granted
+	Order allow,deny
+	Allow from all
+</Directory>

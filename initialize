@@ -1,0 +1,220 @@
+#! /bin/bash
+
+export FIND_STRING="########"
+export REPLACE_STRING="########"
+
+function search_and_fix(){
+    # $1 - Search String
+    # $2 - replace string
+    # $3 - file name
+
+    SEARCH="$1"
+    # echo $1 $2 $3
+    if grep -Fq "$1" $3
+    then
+        sed -i "/$1/c\\$2" $3
+    else
+        echo "$2" >> $3
+    fi
+}
+
+function generate_and_add_bash_paths(){
+
+  # BASHRC
+  FIND_STRING="export BASHRC"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$BASHRC" $BASHRC
+
+  # SSH_PATH
+  SSH_PATH=$HOME/.ssh
+  FIND_STRING="export SSH_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$SSH_PATH" $BASHRC
+
+  # DEV_HELPER_PATH=$(dirname $SCRIPT_COMMAND_PATH)
+  FIND_STRING="export DEV_HELPER_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_PATH" $BASHRC
+
+  # SUPPORT_PATH
+  SUPPORT_PATH=$DEV_HELPER_PATH/Support
+  FIND_STRING="export SUPPORT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$SUPPORT_PATH" $BASHRC
+
+  # LOGS_PATH
+  LOGS_PATH=$DEV_HELPER_PATH/logs
+  FIND_STRING="export LOGS_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$LOGS_PATH" $BASHRC
+  
+  # DEV_HELPER_BASH_SCRIPT_PATH
+  DEV_HELPER_BASH_SCRIPT_PATH=$DEV_HELPER_PATH/BashScripts
+  FIND_STRING="export DEV_HELPER_BASH_SCRIPT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_BASH_SCRIPT_PATH" $BASHRC
+
+  # DEV_HELPER_COMMANDS_PATH
+  DEV_HELPER_COMMANDS_PATH=$DEV_HELPER_BASH_SCRIPT_PATH/commands
+  FIND_STRING="export DEV_HELPER_COMMANDS_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_COMMANDS_PATH" $BASHRC
+
+  # DEV_HELPER_PY_SCRIPT_PATH
+  DEV_HELPER_PY_SCRIPT_PATH=$DEV_HELPER_PATH/PyScripts
+  FIND_STRING="export DEV_HELPER_PY_SCRIPT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_PY_SCRIPT_PATH" $BASHRC
+
+  FIND_STRING="export PATH=\$PATH:\$DEV_HELPER_COMMANDS_PATH:\$SNAP_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC
+
+  FIND_STRING="export PYTHONPATH=\$DEV_HELPER_PY_SCRIPT_PATH:\$PYTHONPATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC
+  source $BASHRC
+}
+
+function generate_and_add_env(){
+  # .env file path
+  ENV_FILE_PATH=$DEV_HELPER_PY_SCRIPT_PATH/.env
+  touch $ENV_FILE_PATH
+  FIND_STRING="DEV_HELPER_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_PATH" $ENV_FILE_PATH
+
+  # SUPPORT_PATH
+  SUPPORT_PATH=$DEV_HELPER_PATH/Support
+  FIND_STRING="SUPPORT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$SUPPORT_PATH" $ENV_FILE_PATH
+
+  # LOGS_PATH
+  LOGS_PATH=$DEV_HELPER_PATH/logs
+  FIND_STRING="LOGS_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$LOGS_PATH" $ENV_FILE_PATH
+  
+  # DEV_HELPER_BASH_SCRIPT_PATH
+  DEV_HELPER_BASH_SCRIPT_PATH=$DEV_HELPER_PATH/BashScripts
+  FIND_STRING="DEV_HELPER_BASH_SCRIPT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_BASH_SCRIPT_PATH" $ENV_FILE_PATH
+
+  # DEV_HELPER_COMMANDS_PATH
+  DEV_HELPER_COMMANDS_PATH=$DEV_HELPER_BASH_SCRIPT_PATH/commands
+  FIND_STRING="DEV_HELPER_COMMANDS_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_COMMANDS_PATH" $ENV_FILE_PATH
+
+  # DEV_HELPER_PY_SCRIPT_PATH
+  DEV_HELPER_PY_SCRIPT_PATH=$DEV_HELPER_PATH/PyScripts
+  FIND_STRING="DEV_HELPER_PY_SCRIPT_PATH"
+  search_and_fix "$FIND_STRING" "$FIND_STRING=$DEV_HELPER_PY_SCRIPT_PATH" $ENV_FILE_PATH
+}
+
+function detect_os_deb (){
+
+  if [[ ( -z "${os}" ) && ( -z "${dist}" ) ]]; then
+    # some systems dont have lsb-release yet have the lsb_release binary and
+    # vice-versa
+    if [ -e /etc/lsb-release ]; then
+      . /etc/lsb-release
+
+      if [ "${ID}" = "raspbian" ]; then
+        os=${ID}
+        dist=`cut --delimiter='.' -f1 /etc/debian_version`
+      else
+        os=${DISTRIB_ID}
+        dist=${DISTRIB_CODENAME}
+
+        if [ -z "$dist" ]; then
+          dist=${DISTRIB_RELEASE}
+        fi
+      fi
+
+    elif [ `which lsb_release 2>/dev/null` ]; then
+      dist=`lsb_release -c | cut -f2`
+      os=`lsb_release -i | cut -f2 | awk '{ print tolower($1) }'`
+
+    elif [ -e /etc/debian_version ]; then
+      # some Debians have jessie/sid in their /etc/debian_version
+      # while others have '6.0.7'
+      os=`cat /etc/issue | head -1 | awk '{ print tolower($1) }'`
+      if grep -q '/' /etc/debian_version; then
+        dist=`cut --delimiter='/' -f1 /etc/debian_version`
+      else
+        dist=`cut --delimiter='.' -f1 /etc/debian_version`
+      fi
+
+    else
+      unknown_os
+    fi
+  fi
+
+  if [ -z "$dist" ]; then
+    unknown_os
+  fi
+
+  # remove whitespace from OS and dist name
+  os="${os// /}"
+  dist="${dist// /}"
+
+  echo "Detected operating system as $os/$dist."
+}
+
+function control_c() {
+    echo "Terminating due to Keyboard Interrupt!!!"
+    source $BASHRC
+    exit
+}
+
+trap control_c SIGINT
+
+echo "------------------------------------------------------------------------------"
+echo "|               Initializing and Configuring Dev Environment                 |"
+echo "------------------------------------------------------------------------------"
+OS_NAME=$(head -n 1 /etc/os-release | tr -s '=' | cut -d '=' -f 2 | tr -d '"')
+OS_NAME=${OS_NAME^^} # Uppercase
+OS_NAME=${OS_NAME,,} # Lowercase
+echo "OS Name: $OS_NAME"
+detect_os
+MODEL_NAME=$(tr -d '\0' </proc/device-tree/model)
+if [[ !$MODEL_NAME ]]; then
+    MODEL_NAME=$(tr -d '\0' </sys/firmware/devicetree/base/model)
+fi
+MODEL_NAME=${MODEL_NAME,,}
+echo "The Model is: $MODEL_NAME"
+SCRIPT_COMMAND_PATH=${BASH_SOURCE[0]}
+echo "Running Script @$SCRIPT_COMMAND_PATH"
+# DEV_HELPER_PATH
+echo $SCRIPT_COMMAND_PATH
+if [[ "$SCRIPT_COMMAND_PATH" == *"./initialize"* ]] || [[ "$SCRIPT_COMMAND_PATH" == "initialize" ]]; then
+    echo "its ."
+    echo $(pwd)
+    DEV_HELPER_PATH=$(pwd)
+else
+    DEV_HELPER_PATH=$(dirname $SCRIPT_COMMAND_PATH)
+fi
+echo "DEV_HELPER_PATH: $DEV_HELPER_PATH"
+echo "Adding Configuration to .bashrc"
+
+echo "Press Enter key to start: "
+read a
+
+echo "Installing Required Python modules"
+sudo apt install -y python3-pip >> /dev/null
+pip3 install python-dotenv >> /dev/null
+sudo pip3 install python-dotenv >> /dev/null
+# Start exporting variables to .bashrc
+export BASHRC="$HOME/.bashrc"
+NEWLINE=$'\n\n'
+
+FIND_STRING="# START_CUSTOM_CODES"
+search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC
+generate_and_add_bash_paths
+generate_and_add_env
+
+# FIND_STRING="%sudo    ALL=(ALL:ALL) NOPASSWD:$DEV_HELPER_COMMANDS_PATH/suc"
+# sysadmin    ALL=NOPASSWD: /home/sysadmin/dev-helper/Linux/BashScripts/commands/sucommand
+source $BASHRC
+FIND_STRING="$USER    ALL=NOPASSWD: $DEV_HELPER_COMMANDS_PATH/sucommand"
+REPLACE_STRING=$FIND_STRING
+echo $FIND_STRING
+terminal search_replace_text_in_file "/etc/sudoers" canadd
+# sudo_search_and_fix "$FIND_STRING" "$FIND_STRING" "/etc/sudoers"
+
+
+init-config mkdirs
+init-config terminal
+
+source $BASHRC
+
+FIND_STRING="# END_CUSTOM_CODES"
+search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC

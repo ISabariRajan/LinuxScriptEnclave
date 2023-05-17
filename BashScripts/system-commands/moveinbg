@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo $@
+echo "Moving $1 -> $2"
+# suc nohup mv -v $1/* $2/ >> $LOGS_PATH/move.log &2>&1
+system bg mv -v -f $1 $2

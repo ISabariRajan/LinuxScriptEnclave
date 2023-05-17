@@ -1,0 +1,6 @@
+**/logs/**
+**/__pycahe__/**
+**/.gradle/**
+**/.vscode/**
+*.pyc
+**/installers/**

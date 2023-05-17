@@ -1,0 +1,70 @@
+#! /bin/bash
+BASHRC=$1
+export FIND_STRING="########"
+export REPLACE_STRING="########"
+
+
+function replace_string(){
+    # SEARCH="$1"
+    FIND_STRING="$1"
+    REPLACE_STRING="$1"
+    terminal search_replace_text_in_file $BASHRC canadd
+}
+
+function add_colors(){
+    # f="generate_color_by_name"
+    FIND_STRING="$(terminal generate_color_by_name $1 $2)"
+    REPLACE_STRING=$FIND_STRING
+    terminal search_replace_text_in_file $BASHRC canadd
+}
+
+function add_blinkers(){
+    f="generate_blinker_by_name"
+    FIND_STRING="$(terminal generate_blinker_by_name $1 $2)"
+    REPLACE_STRING=$FIND_STRING
+    terminal search_replace_text_in_file $BASHRC canadd
+}
+# Declare colors for bash script
+replace_string "# Color Codes to be used in BASH"
+
+add_colors LIGHT BLACK
+add_colors LIGHT RED
+add_colors LIGHT GREEN
+add_colors LIGHT BROWN
+add_colors LIGHT BLUE
+add_colors LIGHT PURPLE
+add_colors LIGHT CYAN
+add_colors LIGHT WHITE
+
+add_colors DARK BLACK
+add_colors DARK RED
+add_colors DARK GREEN
+add_colors DARK BROWN
+add_colors DARK BLUE
+add_colors DARK PURPLE
+add_colors DARK CYAN
+add_colors DARK WHITE
+
+replace_string "# Blinker Color Codes to be used in BASH"
+add_blinkers LIGHT BLACK
+add_blinkers LIGHT RED
+add_blinkers LIGHT GREEN
+add_blinkers LIGHT BROWN
+add_blinkers LIGHT BLUE
+add_blinkers LIGHT PURPLE
+add_blinkers LIGHT CYAN
+add_blinkers LIGHT WHITE
+
+add_blinkers DARK BLACK
+add_blinkers DARK RED
+add_blinkers DARK GREEN
+add_blinkers DARK BROWN
+add_blinkers DARK BLUE
+add_blinkers DARK PURPLE
+add_blinkers DARK CYAN
+add_blinkers DARK WHITE
+
+replace_string "NO_BLINKER=\"\[$(tput sgr0)\]\""
+# replace_string "NO_BLINKER=\"\[$(tput sgr0)\]\""
+# echo "NO_BLINKER=\"\[$(tput sgr0)\]\"" >> $BASHRC
+# echo "NO_BLINKER=\"\[echo \$(tput sgr0)\]\"" >> $BASHRC

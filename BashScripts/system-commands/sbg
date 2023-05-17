@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo $@
+# sudo su -s /bin/bash "screen -d -m  $@"
+screen -d -m  suc $@
+screen -ls

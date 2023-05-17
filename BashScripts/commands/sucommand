@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ~/.bashrc
+# sudo -E $@
+# sudo -E $@
+sudo -E $@

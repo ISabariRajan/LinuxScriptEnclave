@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source ~/.bashrc
+# Function to show git branch along with actuals
+# https://www.geeksforgeeks.org/how-to-find-length-of-string-in-bash-script/
+function parse_git_branch () {
+  OUTPUT=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  if [ -z "$OUTPUT" ]; then
+    echo "No Repo"
+  else
+    echo "$OUTPUT"
+  fi
+}
+
+echo $(parse_git_branch)

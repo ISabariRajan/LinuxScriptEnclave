@@ -1,0 +1,1 @@
+sed -i -e 's/\r$//' parse_git_branch

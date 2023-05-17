@@ -1,0 +1,9 @@
+**/.metadata/**
+**/node_modules/**
+**/.gradle/**
+**/__pycache__/**
+**/site-packages/**
+**/*.log
+**/.vscode
+**/.find
+**/.replace

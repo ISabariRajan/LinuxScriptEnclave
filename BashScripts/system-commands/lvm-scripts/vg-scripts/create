@@ -1,0 +1,18 @@
+#!/bin/bash
+# $1 - VG name
+# $2 - 
+# args=$@
+echo "${#@}"
+echo "${@:2}"
+vg_name=$1
+main_device=$2
+# Wipe metadata for main device then create VG in the physical drive
+suc wipefs -a $main_device
+suc vgcreate $vg_name $main_device
+# Extend VG for other devices
+devices=${@:3}
+for device in $devices
+do
+    suc wipefs -a $device
+    suc vgextend $vg_name $device
+done

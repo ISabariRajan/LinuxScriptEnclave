@@ -1,0 +1,42 @@
+#! /bin/bash
+
+# $1 - Color Type "DARK" / LIGHT
+# $2 - COlor Name (RED, GREEN, ...)
+
+#https://medium.com/@joao.paulo.silvasouza/change-your-terminals-background-color-dynamically-using-escape-sequences-aba6e5ed2b29
+# Manipulate special colors.
+# 10 = foreground, 11 = background, 12 = cursor foregound
+# 13 = mouse foreground, 708 = terminal border background
+# \[\e[{index};{color}\]
+# https://stackoverflow.com/questions/6592077/bash-prompt-and-echoing-colors-inside-a-function
+# Using /001 for '[' and /002 for ']'
+# https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/
+
+# Setting colors and ParseGIT
+# Black        0;30     Dark Gray     1;30
+# Red          0;31     Light Red     1;31
+# Green        0;32     Light Green   1;32
+# Brown/Orange 0;33     Yellow        1;33
+# Blue         0;34     Light Blue    1;34
+# Purple       0;35     Light Purple  1;35
+# Cyan         0;36     Light Cyan    1;36
+# Light Gray   0;37     White         1;37
+# 0; -> Normal color
+# 1; -> Light Color
+function generate(){
+    LIGHT=1
+    DARK=0
+
+    BLACK=30
+    RED=31
+    GREEN=32
+    BROWN=33
+    BLUE=34
+    PURPLE=35
+    CYAN=36
+    WHITE=37
+    echo "${!1};${!2}"
+
+}
+
+echo $(generate $1 $2)

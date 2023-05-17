@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# $1 -> VPN Name
+
+
+python3 $BOTS_PATH/vpn_service.py "$1" 'enable'

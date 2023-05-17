@@ -1,0 +1,1 @@
+DAEMON_OPTS="-dd -t -f /home/pi/hostapd.log"

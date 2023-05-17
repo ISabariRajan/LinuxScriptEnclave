@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+dircom check_and_mkdirs $LOGS_PATH
+dircom check_and_mkdirs $LOGS_PATH/error
+dircom check_and_mkdirs $LOGS_PATH/debug
+dircom check_and_mkdirs $SSH_PATH

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/.bashrc
+# echo $1
+if [[ ! -e $1 ]]; then
+    mkdir $1
+    suc chmod -R 770 $1
+fi

@@ -1,0 +1,2 @@
+#!/bin/bash
+suc lvchange -ay /dev/$1/$2

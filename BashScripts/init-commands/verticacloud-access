@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+# Adding DNS servers to linux
+RES_FILE="/etc/resolv.conf"
+sudo grep -Fq "search localdomain" $RES_FILE
+SUCCESS=$?
+if [ $SUCCESS -eq 0 ]
+then
+    sudo mv $RES_FILE /etc/resolv.conf.orig
+fi
+sudo cp $CMD_DEV_HELPER_PATH/configs/resolv.conf /etc/resolv.conf
+sudo chmod 644 /etc/resolv.conf

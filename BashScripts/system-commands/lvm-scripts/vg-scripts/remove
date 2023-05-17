@@ -1,0 +1,12 @@
+#!/bin/bash
+vg=$1
+linked_lvs=$(suc lvs | grep $vg | tr -s ' ' | cut -d ' ' -f 2)
+for lv in $linked_lvs
+do
+    echo "removing LV->$lv in VG->$vg"
+    system lvm lv remove $vg $lv
+done
+echo "removing VG->$vg"
+suc vgremove $vg
+
+# suc lvremove -y /dev/$1/$2

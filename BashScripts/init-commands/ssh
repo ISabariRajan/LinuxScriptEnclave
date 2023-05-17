@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source ~/.bashrc
+BASHRC=~/.bashrc
+export FIND_STRING="########"
+export REPLACE_STRING="########"
+
+cp $DEV_HELPER_BASH_SCRIPT_PATH/Support/configs/ssh.conf ~/.ssh/config
+suc chmod 600 ~/.ssh/config
+echo "\$vertica\$" > $SSH_PATH/.cred.txt
+FIND_STRING="ssh="
+REPLACE_STRING="alias "$FIND_STRING"\"sshpass -f ~/.ssh/.cred.txt ssh\""
+terminal search_replace_text_in_file $BASHRC canadd,nonewline
+
+FIND_STRING="scp="
+REPLACE_STRING="alias "$FIND_STRING"\"sshpass -f ~/.ssh/.cred.txt scp\""
+terminal search_replace_text_in_file $BASHRC canadd,nonewline
+
+source ~/.bashrc

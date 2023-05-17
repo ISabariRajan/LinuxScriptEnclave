@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source ~/.bashrc
+# .env file path
+FILENAME=$DEV_HELPER_PY_SCRIPT_PATH/.find
+suc rm $FILENAME
+echo "$FIND_STRING" >> $FILENAME
+FILENAME=$DEV_HELPER_PY_SCRIPT_PATH/.replace
+suc rm $FILENAME
+echo "$REPLACE_STRING" >> $FILENAME
+
+# $1 - Filename to change
+# $2 - Types (StartText, NoNewLine, sudo, canadd)
+# echo $1
+supython $DEV_HELPER_PY_SCRIPT_PATH/Service/File/find_replace_string_in_file.py $@
+wait
+unset REPLACE_STRING
+unset FIND_STRING

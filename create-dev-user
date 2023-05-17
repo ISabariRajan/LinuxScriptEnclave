@@ -1,0 +1,72 @@
+#! /bin/bash
+
+function show_intro(){
+    cat <<-EOF
+
+        -----------------------------------------------------------
+        |                                                         |
+        |      Creates MC User and Initialize Dev Environment     |
+        |                                                         |
+        -----------------------------------------------------------
+
+EOF
+}
+
+function control_c() {
+    echo "Terminating due to Keyboard Interrupt!!!"
+    exit
+}
+
+function error_and_exit(){
+    echo "Error while executing $0"
+    return 0
+}
+
+function check_user_exists(){
+
+    echo "Checking if User '$user_name' exists: "
+    if id $user_name >/dev/null 2>&1; then
+        echo "FAIL"
+        return 1
+    fi
+    echo "PASS"
+    return 0
+}
+
+function create_user_and_to_sudoer(){
+    suc useradd $user_name -d $user_home
+
+    if [ $? -eq 0 ]; then
+        suc usermod -a -G mcadmin $user_name
+        printf "\nUser '$user_name' created successfully, you will be now prompted for password\n"
+        suc passwd $user_name
+        suc sh -c "echo \"$user_name    ALL=(ALL:ALL) ALL\n\" >> /etc/sudoers"
+        # mkdir /home/
+    else
+        error_and_exit
+    fi
+    return 0
+}
+
+function check_and_create_user(){
+
+    complete=1
+    while [ $complete -eq 1 ];
+    do
+        echo "Enter Username to create User: "
+        read user_name
+        if check_user_exists ; then
+            user_home="/home/$user_name"
+            create_user_and_to_sudoer
+            complete=0
+        else
+            printf "ERROR: User exists, Please use a different username\n"
+        fi
+    done
+
+
+}
+
+trap control_c SIGINT
+show_intro
+check_and_create_user

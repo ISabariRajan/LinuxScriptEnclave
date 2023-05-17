@@ -1,0 +1,4 @@
+#!/bin/bash
+system lvm lv disable $1 $2
+echo "Removing $1/$2"
+suc lvremove -y /dev/$1/$2

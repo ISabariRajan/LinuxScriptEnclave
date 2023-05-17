@@ -1,0 +1,373 @@
+# This is created programatically on 2022-06-03 | 01:05:1654198547
+
+
+[SabariDumps]
+path=/home/saravananindra/BaseCodes/mounts/SabariDumps
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[1.8T Size Volume]
+path=/home/saravananindra/BaseCodes/mounts/1.8T Size Volume
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[CustomCodes]
+path=/home/saravananindra/BaseCodes/mounts/BaseCodes/CustomCodes
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[BaseCodes]
+path=/home/saravananindra/BaseCodes/mounts/BaseCodes
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/CustomCodes/Microfocus/mounts
+public=no
+
+
+[stage]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/stage
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[utilities]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/utilities
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[mc]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/mc
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[server]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/server
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[serverfarm]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/serverfarm
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[collections]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/collections
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[Vertica]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/stage/utilities/mc/server/serverfarm/collections
+public=no
+
+
+[DayJob]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/Vertica
+public=no
+
+
+[WorkFiles]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/DayJob
+public=no
+
+
+[stage]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/stage
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[utilities]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/utilities
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[mc]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/mc
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[server]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/server
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[serverfarm]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/serverfarm
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[collections]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/collections
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[Vertica]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/stage/utilities/mc/server/serverfarm/collections
+public=no
+
+
+[DayJob]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/Vertica
+public=no
+
+
+[WorkFiles]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/DayJob
+public=no
+
+
+[stage]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/stage
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[utilities]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/utilities
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[mc]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/mc
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[server]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/server
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[serverfarm]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/serverfarm
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[collections]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica/collections
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/
+public=no
+
+
+[Vertica]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob/Vertica
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/stage/utilities/mc/server/serverfarm/collections
+public=no
+
+
+[DayJob]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles/DayJob
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/Vertica
+public=no
+
+
+[WorkFiles]
+path=/home/saravananindra/BaseCodes/mounts/WorkFiles
+comment = Programmatical
+writable=Yes
+create mask=0777
+directory mask=0777
+force create mode = 0666
+force directory mode = 0777
+veto files = /lost+found/*.config-share*/DayJob
+public=no

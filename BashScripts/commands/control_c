@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+echo "Terminating due to Keyboard Interrupt!!!"
+exit

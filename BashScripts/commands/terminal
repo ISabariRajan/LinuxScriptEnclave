@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.bashrc
+# echo $@
+$(dirname $DEV_HELPER_COMMANDS_PATH)/terminal-commands/$@

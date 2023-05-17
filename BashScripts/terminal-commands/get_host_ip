@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/.bashrc
+function get_host_ip () {
+    hostname -I | cut -d ' ' -f 1
+}
+
+echo $(get_host_ip)

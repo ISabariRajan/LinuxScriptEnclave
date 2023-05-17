@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source ~/.bashrc
+FIND_STRING="GITROOT="
+NEW_STRING=$FIND_STRING"\"ssh://git@git.verticacorp.com:7999/mc\""
+
+search_replace_text_in_file "$FIND_STRING" "$NEW_STRING" $BASHRC
+# clear
+gitc generate_and_add_git_keys "$BASHRC"
+

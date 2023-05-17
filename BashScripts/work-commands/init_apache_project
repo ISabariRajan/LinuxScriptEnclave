@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# ARG 1 - Original Location 
+# ARG 2 - Alias Name
+
+link_folder_to_httpd $1 $2
+link_php_generics $1

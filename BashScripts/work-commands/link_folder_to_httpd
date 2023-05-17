@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd /var/www/html
+echo "$1"
+if [ ! -z "$1" ]
+then
+    suc chmod -R 775 $1
+    suc ln -s $1 /var/www/html/$2
+else
+    echo "Required arguments are not found"
+    echo "Usage:"
+    echo "<command> [Originalfolder] [apachepath]"
+fi

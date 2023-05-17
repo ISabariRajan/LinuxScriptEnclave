@@ -1,0 +1,22 @@
+#!/bin/sh
+case "$1" in
+start)
+# Start daemon.
+echo -n "Starting ADB: "
+adb start-server
+;;
+stop)
+# Stop daemons.
+echo -n "Shutting ADB: "
+adb kill-server
+;;
+restart)
+$0 stop
+$0 start
+;;
+*)
+echo "Usage: $0 {start|stop|restart}"
+exit 1
+esac
+
+exit 0

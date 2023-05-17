@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ~/.bashrc
+echo "Do you wish to colourize Terminal? (y/n):"
+read choice
+if [[ ${choice,,} == "y" ]]; then
+    echo "Updating Terminal Colors"
+    terminal add_colors_to_bash $BASHRC
+    terminal generate_ps1 $BASHRC
+    source ~/.bashrc
+fi
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+
+source ~/.bashrc
+printf "\nPress Enter key to clone dev repositories: "
+read a
+# vertica clone_and_build_collections
+vertica clone_and_build_mc
+source ~/.bashrc
+
