@@ -9,7 +9,7 @@ sys.path.append(os.environ["PYUTILS_PATH"])
 from Utilities.package import DeviceUtilities
 
 print(sys.argv)
-utils = DeviceUtilities("MountAllDisks")
+utils = DeviceUtilities(botname="MountAllDisks")
 utils.log("Started")
 utils.check_and_create_dir(MOUNT_DIR)
 utils.change_dir_owner(MOUNT_DIR, "sambare", "adm")
