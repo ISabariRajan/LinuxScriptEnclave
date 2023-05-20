@@ -261,11 +261,11 @@ class logger:
         outerframes = inspect.getouterframes(innerframe)
 
         for index, frame in enumerate(outerframes):
-            print(index, frame)
+            # print(index, frame)
             if(frame.function == "get_called_funciton_name_with_module"):
                 index += 3
                 break
-        print(index, outerframes[index])
+        # print(index, outerframes[index])
         called_function_name = (outerframes[index].function)
         if(called_function_name != "<module>"):
             called_function_name += "()"
@@ -326,8 +326,10 @@ class logger:
         return None
 
     def get_message(self, messenger_obj):
-        extra = {'modname': messenger_obj.module + " | " + messenger_obj.fun_name}
-        logger = logging.getLogger()
+        # extra = {'modname': messenger_obj.module + " | " + messenger_obj.fun_name}
+        module = messenger_obj.module
+        fun_name = self.get_called_funciton_name_with_module()
+        logger = logging.getLogger(module + " | " + fun_name)
         logger = logging.LoggerAdapter(logger, extra)
         # if messenger_obj.data:
         #     messenger_obj.data['method_name'] = self.get_called_function_name()

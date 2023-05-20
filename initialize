@@ -66,7 +66,7 @@ function generate_and_add_bash_paths(){
   FIND_STRING="export PATH=\$PATH:\$COMMANDS_PATH:\$SNAP_PATH"
   search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC
 
-  FIND_STRING="export PYTHONPATH=\$PYSCRIPT_PATH:\$PYTHONPATH"
+  FIND_STRING="export PYTHONPATH=\$PYUTILS_PATH:\$PYTHONPATH"
   search_and_fix "$FIND_STRING" "$FIND_STRING" $BASHRC
   source $BASHRC
 }
