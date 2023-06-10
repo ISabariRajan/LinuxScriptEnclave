@@ -71,7 +71,6 @@ class logger:
                 logger.debug(str(messenger_obj.message))
             except Exception as ex:
                 print("Exception : " + str(ex))
-                # print(messenger_obj.message)
                 messenger_obj.success = False
                 self.__write_log_exception()
 
@@ -211,7 +210,7 @@ class logger:
         """
         if(can_log):
             try:
-                logger = __initiate_logger(messenger_obj)
+                logger = self.__initiate_logger(messenger_obj)
                 error_level = messenger_obj.level.lower()
                 message = messenger_obj.message
                 filter_set = ContextFilter()
